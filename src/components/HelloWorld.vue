@@ -1,60 +1,53 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div className="desktop:mx-[300px] sp:mx-[15px]">
+    <h1 className="desktop:mt-[50px] sp:mt-[20px] desktop:text-[60px] sp:text-[30px]">Where is your classroom?</h1>
+    <div className="flex desktop:flex-row sp:flex-col desktop:items-center desktop:justify-center sp:items-start desktop:mt-[60px] sp:mt-[30px] sp:mx-[30px]">
+      <div className="flex">
+        <label className="text-[24px] mr-[10px]">Day:</label>
+        <select className="border border-gray-400 rounded-[5px] py-[5px] px-[20px]">
+          <option value="1">Monday</option> 
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
+      </div>
+      <div className="flex desktop:ml-[60px] sp:ml-[0px] sp:mt-[20px] desktop:mt-[0px]">
+        <label className="text-[24px] mr-[10px]">Period:</label>
+        <select className="border border-gray-400 rounded-[5px] py-[5px] px-[20px]">
+          <option value="1">1st</option>
+          <option value="2">2nd</option>
+          <option value="3">3rd</option>
+          <option value="4">4th</option>
+          <option value="5">5th</option>
+        </select>
+      </div>
+      <!--<li v-for="(item, index) in data" :key="index" className="text-[24px]">
+        {{ item }}
+      </li>-->
+    </div>
   </div>
 </template>
 
 <script>
+//import db from '../firebase.js'
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+ data() {
+   return {
+     data: [],
+   }
+ },
+ //mounted: function () {
+ //  db.collection("class")
+ //    .get()
+ //    .then((querySnapshot) => {
+ //      querySnapshot.forEach((doc) => {
+ //        console.log(`${doc.id} => ${doc.data().name}`)
+ //        this.data.push(doc.data().name)
+ //      })
+ //    })
+ //},
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
