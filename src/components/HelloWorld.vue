@@ -31,23 +31,23 @@
 </template>
 
 <script>
-//import db from '../firebase.js'
+import db from '../firebase.js'
 export default {
- data() {
+  data() {
    return {
      data: [],
    }
  },
- //mounted: function () {
- //  db.collection("class")
- //    .get()
- //    .then((querySnapshot) => {
- //      querySnapshot.forEach((doc) => {
- //        console.log(`${doc.id} => ${doc.data().name}`)
- //        this.data.push(doc.data().name)
- //      })
- //    })
- //},
+  mounted: function () {
+    db.collection("class")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data().name}`)
+          this.data.push(doc.data().name)
+        })
+      })
+  },
 }
 </script>
 
