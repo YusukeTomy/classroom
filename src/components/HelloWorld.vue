@@ -4,49 +4,135 @@
     <div className="flex desktop:flex-row sp:flex-col desktop:items-center desktop:justify-center sp:items-start desktop:mt-[60px] sp:mt-[30px] sp:mx-[30px]">
       <div className="flex">
         <label className="text-[24px] mr-[10px]">Day:</label>
-        <select className="border border-gray-400 rounded-[5px] py-[5px] px-[20px]">
-          <option value="1">Monday</option> 
-          <option value="2">Tuesday</option>
-          <option value="3">Wednesday</option>
-          <option value="4">Thursday</option>
-          <option value="5">Friday</option>
-          <option value="6">Saturday</option>
+        <select className="border border-gray-400 rounded-[5px] py-[5px] px-[20px]" v-model="setDay">
+          <option>----</option>
+          <option>Monday</option> 
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
         </select>
       </div>
       <div className="flex desktop:ml-[60px] sp:ml-[0px] sp:mt-[20px] desktop:mt-[0px]">
         <label className="text-[24px] mr-[10px]">Period:</label>
-        <select className="border border-gray-400 rounded-[5px] py-[5px] px-[20px]">
-          <option value="1">1st</option>
-          <option value="2">2nd</option>
-          <option value="3">3rd</option>
-          <option value="4">4th</option>
-          <option value="5">5th</option>
+        <select className="border border-gray-400 rounded-[5px] py-[5px] px-[20px]" v-model="setPeriod">
+          <option>--</option>
+          <option>1st</option>
+          <option>2nd</option>
+          <option>3rd</option>
+          <option>4th</option>
+          <option>5th</option>
         </select>
       </div>
-      <!--<li v-for="(item, index) in data" :key="index" className="text-[24px]">
-        {{ item }}
-      </li>-->
+      <button className="px-4 py-1 bg-teal-500 text-white rounded-[3px] ml-[50px] font-bold hover:bg-teal-600 duration-300"
+              v-on:click="setDP">
+        検索
+      </button>
+    </div>
+    <div className="flex flex-wrap gap-y-5 my-10 justify-center ml-[20px]">
+    <p v-for="(item, index) in data" :key="index" className="text-[24px] w-[400px] flex justify-center items-center">
+      {{ item }}
+    </p>
     </div>
   </div>
 </template>
 
 <script>
 import db from '../firebase.js'
+import store from '../store/index.js'
+
 export default {
   data() {
    return {
      data: [],
    }
  },
-  mounted: function () {
-    db.collection("class")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data().name}`)
-          this.data.push(doc.data().name)
-        })
-      })
+  methods: {
+    setClassList: function(dp) {
+      db.collection("class")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            if(doc.data().DP===dp){
+              this.data.push(doc.data().name)
+              this.data.push(doc.data().class)
+            }
+          })
+      });
+    },
+    setDP: function() { 
+      location.reload();
+      store.commit('setDay', this.setDay)
+      store.commit('setPeriod', this.setPeriod)
+
+      if(this.setDay==="Monday" && this.setPeriod ==='1st'){
+        store.commit('setClass', 'M1')
+      } else if(this.setDay==="Monday" && this.setPeriod ==='2nd'){
+        store.commit('setClass', 'M2')
+      } else if(this.setDay==="Monday" && this.setPeriod==='3rd'){
+        store.commit('setClass', 'M3')
+      } else if(this.setDay==="Monday" && this.setPeriod==='4th'){
+        store.commit('setClass', 'M4')
+      } else if(this.setDay==="Monday" && this.setPeriod==='5th'){
+        store.commit('setClass', 'M5')
+      } else if(this.setDay==="Tuesday" && this.setPeriod==='1st'){
+        store.commit('setClass', 'Tu1')
+      } else if(this.setDay==="Tuesday" && this.setPeriod==='2nd'){
+        store.commit('setClass', 'Tu2')
+      } else if(this.setDay==="TuesDay" && this.setPeriod==='3nd'){
+        store.commit('setClass', 'Tu3')
+      } else if(this.setDay==="Tuesday" && this.setPeriod==='4th'){
+        store.commit('setClass', 'Tu4')
+      } else if(this.setDay==="Tuesday" && this.setPeriod==='5th'){
+        store.commit('setClass', 'Tu5')
+      } else if(this.setDay==="Wednesday" && this.setPeriod==='1st'){
+        store.commit('setClass', 'W1')
+      } else if(this.setDay==="WednesDay" && this.setPeriod==='2nd'){
+        store.commit('setClass', 'W2')
+      } else if(this.setDay==="Wednesday" && this.setPeriod==='3rd'){
+        store.commit('setClass', 'W3')
+      } else if(this.setDay==="Wednesday" && this.setPeriod==='4th'){
+        store.commit('setClass', 'W4')
+      } else if(this.setDay==="Wednesday" && this.setPeriod==='5th'){
+        store.commit('setClass', 'W5')
+      } else if(this.setDay==="Thursday" && this.setPeriod==='1st'){
+        store.commit('setClass', 'Ts1')
+      } else if(this.setDay==="Thursday" && this.setPeriod==='2nd'){
+        store.commit('setClass', 'Ts2')
+      } else if(this.setDay==="Thursday" && this.setPeriod==='3rd'){
+        store.commit('setClass', 'Ts3')
+      } else if(this.setDay==="Thursday" && this.setPeriod==='4th'){
+        store.commit('setClass', 'Ts4')
+      } else if(this.setDay==="Thursday" && this.setPeriod==='5th'){
+        store.commit('setClass', 'Ts5')
+      } else if(this.setDay==="Friday" && this.setPeriod==='1st'){
+        store.commit('setClass', 'F1')
+      } else if(this.setDay==="Friday" && this.setPeriod==='2nd'){
+        store.commit('setClass', 'F2')
+      } else if(this.setDay==="Friday" && this.setPeriod==='3rd'){
+        store.commit('setClass', 'F3')
+      } else if(this.setDay==="Friday" && this.setPeriod==='4th'){
+        store.commit('setClass', 'F4')
+      } else if(this.setDay==="Friday" && this.setPeriod==='5th'){
+        store.commit('setClass', 'F5')
+      } else if(this.setDay==="Saturday" && this.setPeriod==='1st'){
+        store.commit('setClass', 'Sa1')
+      } else if(this.setDay==="Saturday" && this.setPeriod==='2nd'){
+        store.commit('setClass', 'Sa2')
+      } else if(this.setDay==="Saturday" && this.setPeriod==='3rd'){
+        store.commit('setClass', 'Sa3')
+      } else if(this.setDay==="Saturday" && this.setPeriod==='4th'){
+        store.commit('setClass', 'Sa4')
+      } else if(this.setDay==="Saturday" && this.setPeriod==='5th'){
+        store.commit('setClass', 'Sa5')
+      }
+      
+      if(store.state.Class !== store.state.LastClass){
+        this.setClassList(store.state.Class)
+        store.commit('setLastClass', store.state.Class)
+      }
+    }
   },
 }
 </script>
