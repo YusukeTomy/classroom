@@ -23,6 +23,9 @@ const mutations = {
   setLastClass(state, cs){
     state.LastClass = cs
   },
+  reset(state) {
+    Object.assign(state, getDefaultState())
+  },
 }
 
 const getters = {}

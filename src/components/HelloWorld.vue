@@ -25,9 +25,9 @@
           <option>5th</option>
         </select>
       </div>
-      <button className="px-4 py-1 bg-teal-500 text-white rounded-[3px] ml-[50px] font-bold hover:bg-teal-600 duration-300"
+      <button className="flex justify-center items-center px-4 py-1 bg-teal-500 text-white rounded-[3px] ml-[50px] font-bold hover:bg-teal-600 duration-300"
               v-on:click="setDP">
-        検索
+        Search
       </button>
     </div>
     <div className="flex flex-wrap gap-y-5 my-10 justify-center ml-[20px]">
@@ -62,7 +62,6 @@ export default {
       });
     },
     setDP: function() { 
-      location.reload();
       store.commit('setDay', this.setDay)
       store.commit('setPeriod', this.setPeriod)
 
@@ -88,7 +87,7 @@ export default {
         store.commit('setClass', 'Tu5')
       } else if(this.setDay==="Wednesday" && this.setPeriod==='1st'){
         store.commit('setClass', 'W1')
-      } else if(this.setDay==="WednesDay" && this.setPeriod==='2nd'){
+      } else if(this.setDay==="Wednesday" && this.setPeriod==='2nd'){
         store.commit('setClass', 'W2')
       } else if(this.setDay==="Wednesday" && this.setPeriod==='3rd'){
         store.commit('setClass', 'W3')
@@ -132,6 +131,9 @@ export default {
         this.setClassList(store.state.Class)
         store.commit('setLastClass', store.state.Class)
       }
+    },
+    reset: function() {
+      store.commit('reset')
     }
   },
 }
