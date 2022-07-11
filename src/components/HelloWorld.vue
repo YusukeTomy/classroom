@@ -79,7 +79,7 @@ export default {
         store.commit('setClass', 'Tu1')
       } else if(this.setDay==="Tuesday" && this.setPeriod==='2nd'){
         store.commit('setClass', 'Tu2')
-      } else if(this.setDay==="TuesDay" && this.setPeriod==='3nd'){
+      } else if(this.setDay==="Tuesday" && this.setPeriod==='3rd'){
         store.commit('setClass', 'Tu3')
       } else if(this.setDay==="Tuesday" && this.setPeriod==='4th'){
         store.commit('setClass', 'Tu4')
