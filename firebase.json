@@ -4,6 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
+    "site": "classroom-41b11",
     "public": "dist",
     "ignore": [
       "firebase.json",
