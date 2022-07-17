@@ -30,6 +30,11 @@
               v-on:click="setDP">
         Search
       </button>
+      <button className="flex justify-center items-center px-4 py-1 bg-blue-500 text-white rounded-[3px] desktop:ml-[25px] sp:ml-[0px]
+                         font-bold hover:bg-blue-600 duration-300 desktop:mt-[0px] sp:mt-[20px]"
+              v-on:click="setRS">
+        Reset
+      </button>
     </div>
     <div className="flex flex-wrap desktop:gap-y-5 sp:gap-y-2 desktop:my-10 sp:my-5 justify-center ml-[20px]">
     <p v-for="(item, index) in data" :key="index" className="desktop:text-[24px] sp:text-[18px] desktop:w-[380px] sp:w-[160px] flex justify-center items-center">
@@ -61,6 +66,10 @@ export default {
             }
           })
       });
+    },
+    setRS: function() {
+      location.reload()
+      store.commit('setLastClass', '')
     },
     setDP: function() { 
       store.commit('setDay', this.setDay)
@@ -133,9 +142,6 @@ export default {
         store.commit('setLastClass', store.state.Class)
       }
     },
-    reset: function() {
-      store.commit('reset')
-    }
   },
 }
 </script>
