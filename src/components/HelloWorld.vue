@@ -1,6 +1,6 @@
 <template>
   <div className="desktop:mx-[300px] sp:mx-[15px]">
-    <h1 className="desktop:mt-[50px] sp:mt-[13px] desktop:text-[60px] sp:text-[24px]">Where is your classroom?</h1>
+    <h1 className="desktop:mt-[50px] sp:mt-[20px] desktop:text-[60px] sp:text-[24px]">Where is your classroom?</h1>
     <div className="flex desktop:flex-row sp:flex-col items-center justify-center desktop:mt-[60px] sp:mt-[20px] sp:mx-[30px]">
       <div className="flex">
         <label className="text-[24px] mr-[10px]">Day:</label>
@@ -25,16 +25,18 @@
           <option>5th</option>
         </select>
       </div>
-      <button className="flex justify-center items-center px-4 py-1 bg-teal-500 text-white rounded-[3px] desktop:ml-[50px] sp:ml-[0px]
-                         font-bold hover:bg-teal-600 duration-300 desktop:mt-[0px] sp:mt-[20px]"
-              v-on:click="setDP">
-        Search
-      </button>
-      <button className="flex justify-center items-center px-4 py-1 bg-blue-500 text-white rounded-[3px] desktop:ml-[25px] sp:ml-[0px]
-                         font-bold hover:bg-blue-600 duration-300 desktop:mt-[0px] sp:mt-[20px]"
-              v-on:click="setRS">
-        Reset
-      </button>
+      <div className="flex">
+        <button className="flex justify-center items-center px-4 py-1 bg-teal-500 text-white rounded-[3px] desktop:ml-[50px] sp:ml-[0px]
+                          font-bold hover:bg-teal-600 duration-300 desktop:mt-[0px] sp:mt-[20px]"
+                v-on:click="setDP">
+          Search
+        </button>
+        <button className="flex justify-center items-center px-4 py-1 bg-blue-500 text-white rounded-[3px] desktop:ml-[25px] sp:ml-[20px]
+                          font-bold hover:bg-blue-600 duration-300 desktop:mt-[0px] sp:mt-[20px]"
+                v-on:click="setRS">
+          Reset
+        </button>
+      </div>
     </div>
     <div className="flex flex-wrap desktop:gap-y-5 sp:gap-y-2 desktop:my-10 sp:my-5 justify-center ml-[20px]">
     <p v-for="(item, index) in data" :key="index" className="desktop:text-[24px] sp:text-[18px] desktop:w-[380px] sp:w-[160px] flex justify-center items-center">
