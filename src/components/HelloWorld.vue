@@ -6,7 +6,7 @@
         <label className="text-[24px] mr-[10px]">Day:</label>
         <select className="border border-gray-400 rounded-[5px] py-[5px] px-[20px]" v-model="setDay">
           <option>----</option>
-          <option>Monday</option> 
+          <option>月曜日</option> 
           <option>Tuesday</option>
           <option>Wednesday</option>
           <option>Thursday</option>
